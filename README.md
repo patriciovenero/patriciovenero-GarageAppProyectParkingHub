@@ -1,7 +1,7 @@
-# GarageAppProyectParkingHub
+# ParkingHub 🚗🅿️
 
 ## Descripción
-GarageAppProyectParkingHub es una aplicación móvil desarrollada con Flutter que proporciona una plataforma para gestionar garajes, solicitudes de estacionamiento y perfiles de usuarios.
+ParkingHub es una aplicación móvil desarrollada con Flutter que proporciona una plataforma para gestionar garajes, solicitudes de estacionamiento y perfiles de usuarios.
 
 La aplicación consta de las siguientes características principales:
 
@@ -37,6 +37,6 @@ La aplicación consta de las siguientes características principales:
 Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para obtener más información.
 
 ## Contacto
-Si tienes alguna pregunta o sugerencia sobre el proyecto, no dudes en ponerte en contacto conmigo a través de mi correo electrónico (correo@example.com).
+Si tienes alguna pregunta o sugerencia sobre el proyecto, no dudes en ponerte en contacto conmigo a través de mi correo electrónico (patricio.venero@tecsup.edu.pe).
 
-¡Gracias por tu interés en GarageAppProyectParkingHub!
+¡Gracias por tu interés en ParkingHub! 🚀
