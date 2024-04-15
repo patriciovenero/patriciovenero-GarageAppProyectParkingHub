@@ -21,7 +21,7 @@ class _LoginScreen1State extends State<LoginPage> {
   TextEditingController passwordController = TextEditingController();
 
   Future<void> signIn(String email, String password) async {
-    final apiUrl = 'http://192.168.18.24:3000/api/auth/signin';
+    final apiUrl = 'http://192.168.18.21:3000/api/auth/signin';
     try {
       final response = await http.post(
         Uri.parse(apiUrl),
@@ -138,7 +138,7 @@ class _LoginScreen1State extends State<LoginPage> {
                       decoration: InputDecoration(
                         suffixIcon: _isEmailValid
                             ? const Icon(Icons.check, color: Colors.green)
-                            : const Icon(Icons.error, color: Colors.red),
+                            : const Icon(Icons.error, color: Colors.black),
                         labelText: 'Gmail',
                         labelStyle: const TextStyle(
                           fontWeight: FontWeight.bold,

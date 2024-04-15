@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:proyectogaraje/screen/NavigationBarApp.dart';
+import 'package:proyectogaraje/screen/login.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -22,7 +23,8 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
 
-  Future<void> signUp(String name, String username, String email, String password) async {
+  Future<void> signUp(
+      String name, String username, String email, String password) async {
     if (name.isEmpty || username.isEmpty || email.isEmpty || password.isEmpty) {
       showDialog(
         context: context,
@@ -47,7 +49,8 @@ class _RegisterPageState extends State<RegisterPage> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text('Error'),
-            content: const Text('Por favor, ingresa un correo electrónico válido.'),
+            content:
+                const Text('Por favor, ingresa un correo electrónico válido.'),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
@@ -83,7 +86,8 @@ class _RegisterPageState extends State<RegisterPage> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text('Error'),
-            content: const Text('Debes aceptar los términos y condiciones para registrarte.'),
+            content: const Text(
+                'Debes aceptar los términos y condiciones para registrarte.'),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
@@ -96,7 +100,7 @@ class _RegisterPageState extends State<RegisterPage> {
         },
       );
     } else {
-      final apiUrl = 'http://192.168.18.24:3000/api/auth/signup';
+      final apiUrl = 'http://192.168.18.21:3000/api/auth/signup';
       try {
         final response = await http.post(
           Uri.parse(apiUrl),
@@ -122,7 +126,8 @@ class _RegisterPageState extends State<RegisterPage> {
             builder: (BuildContext context) {
               return AlertDialog(
                 title: const Text('Error'),
-                content: const Text('Registro fallido. Por favor, inténtelo de nuevo.'),
+                content: const Text(
+                    'Registro fallido. Por favor, inténtelo de nuevo.'),
                 actions: <Widget>[
                   TextButton(
                     onPressed: () {
@@ -230,13 +235,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       controller: emailController,
                       onChanged: (value) {
                         setState(() {
-                          _isEmailValid = value.isNotEmpty && value.contains('@');
+                          _isEmailValid =
+                              value.isNotEmpty && value.contains('@');
                         });
                       },
                       decoration: InputDecoration(
                         suffixIcon: _isEmailValid
                             ? const Icon(Icons.check, color: Colors.green)
-                            : const Icon(Icons.error, color: Color.fromARGB(255, 5, 5, 5)),
+                            : const Icon(Icons.error,
+                                color: Color.fromARGB(255, 5, 5, 5)),
                         labelText: 'Gmail',
                         labelStyle: const TextStyle(
                           fontWeight: FontWeight.bold,
@@ -310,9 +317,10 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            launch('https://darktermsandconditions.netlify.app/privacy.html');
+                            launch(
+                                'https://darktermsandconditions.netlify.app/privacy.html');
                           },
-                          child: const Text(
+                          child: Text(
                             'Aceptas términos y condiciones',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -326,7 +334,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(height: 10),
                     ElevatedButton(
                       onPressed: () {
-                        signUp(nameController.text, usernameController.text, emailController.text, passwordController.text);
+                        signUp(nameController.text, usernameController.text,
+                            emailController.text, passwordController.text);
                       },
                       child: const Text(
                         'REGISTRARSE',
@@ -340,7 +349,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        backgroundColor: const Color(0xff12baa1), // Color del botón
+                        backgroundColor:
+                            const Color(0xff12baa1), // Color del botón
                       ),
                     ),
                     const SizedBox(height: 50),
@@ -349,21 +359,29 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.end,
-                        children: const [
+                        children: [
                           Text(
                             '¿Ya tienes una cuenta?',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.grey,
                             ),
                           ),
-                          
-                          Text(
-                            'Iniciar sesión',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 17,
-                              color: Colors.black,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginPage()),
+                              );
+                            },
+                            child: Text(
+                              'Iniciar sesión',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ],
